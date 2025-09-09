@@ -41,6 +41,11 @@ def get_registration_count(url, max_seats):
         print(f"Error scraping {url}: {e}")
         return None
 
+@app.route("/")
+def home():
+    return "VITMAS Gravitas 2025 Registration API is running!"
+
+
 @app.route("/registrations")
 def registrations():
     results = {}
@@ -52,5 +57,6 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
 
 
