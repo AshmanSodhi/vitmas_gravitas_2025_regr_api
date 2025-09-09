@@ -48,6 +48,9 @@ def registrations():
     results["event2"] = get_registration_count("https://gravitas.vit.ac.in/events/00cee489-395a-47f6-bacc-46066160caa8", 200)
     return jsonify(results)
 
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
+
