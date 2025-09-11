@@ -4,6 +4,10 @@ import re
 import json
 from datetime import datetime
 import pytz  # added for timezone handling
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "https://ashmansodhi.github.io"}})
 
 EVENTS = {
     "event1": "https://gravitas.vit.ac.in/events/e72677fb-caaa-43b5-99ce-24bf878ff242",
@@ -51,3 +55,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
