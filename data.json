@@ -1,11 +1,11 @@
 {
   "event1": {
-    "registered": 60,
-    "remaining": 140
+    "registered": 61,
+    "remaining": 139
   },
   "event2": {
     "registered": 11,
     "remaining": 189
   },
-  "last_updated": "2025-09-13 19:02:41"
+  "last_updated": "2025-09-13 19:37:08"
 }
