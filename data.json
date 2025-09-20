@@ -3,9 +3,6 @@
     "registered": 141,
     "remaining": 59
   },
-  "event2": {
-    "registered": 104,
-    "remaining": 96
-  },
-  "last_updated": "2025-09-21 01:01:40"
+  "event2": null,
+  "last_updated": "2025-09-21 01:39:06"
 }
