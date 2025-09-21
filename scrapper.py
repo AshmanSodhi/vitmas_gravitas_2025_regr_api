@@ -2,13 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import json
-from datetime import datetime
-import pytz  # added for timezone handling
-from flask_cors import CORS
-from flask import Flask, jsonify
-
-app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://ashmansodhi.github.io"}})
+import time
 
 EVENTS = {
     "event1": "https://gravitas.vit.ac.in/events/e72677fb-caaa-43b5-99ce-24bf878ff242",
@@ -16,6 +10,7 @@ EVENTS = {
 }
 
 MAX_SEATS = 200
+
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 def get_registration_count(url, max_seats):
@@ -44,21 +39,11 @@ def get_registration_count(url, max_seats):
 def main():
     results = {}
     results["event1"] = get_registration_count(EVENTS["event1"], MAX_SEATS)
-
-    # event2 is cancelled → always return 0
-    results["event2"] = {
-        "registered": 0,
-        "remaining": 0,
-        "status": "Event Cancelled"
-    }
-
-    # Get IST timestamp
-    ist = pytz.timezone("Asia/Kolkata")
-    now_ist = datetime.now(ist)
-    results["last_updated"] = now_ist.strftime("%Y-%m-%d %H:%M:%S")
+    results["event2"] = get_registration_count(EVENTS["event2"], MAX_SEATS)
+    results["last_updated"] = time.strftime("%Y-%m-%d %H:%M:%S")
 
     with open("data.json", "w") as f:
-        json.dump(results, f, indent=2, ensure_ascii=False)
+        json.dump(results, f, indent=2)
 
 if __name__ == "__main__":
     main()
