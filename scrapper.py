@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 import re
 import json
 import time
+from datetime import datetime
+import pytz
 
 EVENTS = {
     "event1": "https://gravitas.vit.ac.in/events/e72677fb-caaa-43b5-99ce-24bf878ff242",
@@ -40,10 +42,11 @@ def main():
     results = {}
     results["event1"] = get_registration_count(EVENTS["event1"], MAX_SEATS)
     results["event2"] = get_registration_count(EVENTS["event2"], MAX_SEATS)
-    results["last_updated"] = time.strftime("%Y-%m-%d %H:%M:%S")
+    results["last_updated"] = now_ist.strftime("%Y-%m-%d %H:%M:%S")
 
     with open("data.json", "w") as f:
         json.dump(results, f, indent=2)
 
 if __name__ == "__main__":
     main()
+
