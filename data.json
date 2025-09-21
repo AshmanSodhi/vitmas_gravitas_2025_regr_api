@@ -3,10 +3,6 @@
     "registered": 141,
     "remaining": 59
   },
-  "event2": {
-    "registered": 0,
-    "remaining": 0,
-    "status": "Event Cancelled"
-  },
-  "last_updated": "2025-09-21 11:43:21"
+  "event2": null,
+  "last_updated": "2025-09-21 06:43:06"
 }
