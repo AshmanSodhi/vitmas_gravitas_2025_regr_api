@@ -44,7 +44,13 @@ def get_registration_count(url, max_seats):
 def main():
     results = {}
     results["event1"] = get_registration_count(EVENTS["event1"], MAX_SEATS)
-    results["event2"] = get_registration_count(EVENTS["event2"], MAX_SEATS)
+
+    # event2 is cancelled → always return 0
+    results["event2"] = {
+        "registered": 0,
+        "remaining": 0,
+        "status": "Event Cancelled"
+    }
 
     # Get IST timestamp
     ist = pytz.timezone("Asia/Kolkata")
@@ -56,5 +62,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
