@@ -42,11 +42,16 @@ def main():
     results = {}
     results["event1"] = get_registration_count(EVENTS["event1"], MAX_SEATS)
     results["event2"] = get_registration_count(EVENTS["event2"], MAX_SEATS)
+    
+    # Get IST timestamp
+    ist = pytz.timezone("Asia/Kolkata")
+    now_ist = datetime.now(ist)
     results["last_updated"] = now_ist.strftime("%Y-%m-%d %H:%M:%S")
 
     with open("data.json", "w") as f:
-        json.dump(results, f, indent=2)
+        json.dump(results, f, indent=2, ensure_ascii=False)
 
 if __name__ == "__main__":
     main()
+
 
